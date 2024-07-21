@@ -122,7 +122,7 @@ describe("Pruebas Yapp Web", () => {
       cy.get('[type="tel"]').click();
       cy.get('[type="tel"]').type("+4165433554");
       cy.get("textarea.svelte-qkojwd").type("khsdksdjkhdzlfughdgfd*-/-*/-*/-");
-      //cy.get('button.svelte-qkojwd').click()
+      //cy.get('button.svelte-qkojwd').click() No se puede hacer click ya que es en Prod.
 
       cy.get('[name="fullname"]').clear();
       cy.get('[name="company-name"]').clear();
@@ -269,7 +269,6 @@ describe("Pruebas Yapp Web", () => {
       );
       cy.get(":nth-child(4) > :nth-child(3)").should("be.visible");
       cy.get(".btn").click();
-      //TODO: falta finalizar sección
     });
   });
   describe("pruebas menú principal", () => {
@@ -300,7 +299,7 @@ describe("Pruebas Yapp Web", () => {
       cy.get('[type="email"]').clear();
       cy.get('[type="tel"]').clear();
       cy.get("textarea.svelte-qkojwd").clear();
-      cy.get(".solutions > .svelte-godlbg").should("be.visible");
+      cy.get(".solutions > .svelte-godlbg").clear();
       cy.wait(2000);
       cy.scrollTo(100, 900);
 
@@ -333,8 +332,122 @@ describe("Pruebas Yapp Web", () => {
         "be.visible"
       );
       cy.get(".btn").click();
+    });
+  });
+  describe("pruebas menú principal", () => {
+    it("pruebas por categorias/PRESTADORES", () => {
+      cy.visit("https://yapp.cl/");
 
-      //TODO pruebas de campos vacios
+      cy.get('nav.svelte-1xibl9f > [href="/prestadores"]').click();
+      cy.get(".image").should("be.visible");
+      cy.get("h3.svelte-qkojwd").should("be.visible");
+      cy.wait(3000);
+
+      cy.get('[name="fullname"]').click();
+      cy.get('[name="fullname"]').type("Prueba Test");
+      cy.get('[name="company-name"]').click();
+      cy.get('[name="company-name"]').type("Empresa Test");
+      //cy.get("select.svelte-qkojwd").click();// botón no realiza acción ya que está en blanco.
+      cy.get('[type="email"]').click();
+      cy.get('[type="email"]').type("TEST@TEST.COM");
+      cy.get('[type="tel"]').click();
+      cy.get('[type="tel"]').type("+4165433554");
+      cy.get("textarea.svelte-qkojwd").click();
+      cy.get("textarea.svelte-qkojwd").type("khsdksdjkhdzlfughdgfd*-/-*/-*/-");
+      //cy.get('button.svelte-qkojwd').click ////NO SE PUEDE REALIZAR ESTÁ ACCION PORQUE ES PROD.
+      cy.scrollTo(400, 100);
+
+      cy.get('[name="fullname"]').clear();
+      cy.get('[name="company-name"]').clear();
+      cy.get('[type="email"]').clear();
+      cy.get('[type="tel"]').clear();
+      cy.get("textarea.svelte-qkojwd").clear();
+      scrollTo(100, 900);
+
+      cy.get(".solutions > .svelte-pgz2si").should("be.visible");
+      cy.get(".solution-card").should("be.visible");
+      scrollTo(100, 1500);
+
+      cy.get(".testimony > .svelte-pgz2si").should("be.visible");
+      cy.get(".benefits > .container-xl > :nth-child(1)").should("be.visible");
+      cy.get(
+        ".benefits > .container-xl > :nth-child(2) > :nth-child(1)"
+      ).should("be.visible");
+      cy.get(".container-xl > :nth-child(2) > :nth-child(2)").should(
+        "be.visible"
+      );
+      cy.get(".container-xl > :nth-child(2) > :nth-child(3)").should(
+        "be.visible"
+      );
+      cy.get(".sub-benefit");
+      cy.scrollTo(100, 2000);
+      cy.get(".container-xl > :nth-child(4) > :nth-child(1)").should(
+        "be.visible"
+      );
+      cy.get(".container-xl > :nth-child(4) > :nth-child(2)").should(
+        "be.visible"
+      );
+      cy.get(":nth-child(4) > :nth-child(3)").should("be.visible");
+      cy.get(".btn").click();
+    });
+  });
+
+  describe("Pruebas menú principal", () => {
+    it("Pruebas por categorias/PACIENTES", () => {
+      cy.visit("https://yapp.cl/");
+
+      cy.xpath("/html/body/div/div[1]/div/header/div/nav/a[3]").click();
+      cy.get("a.svelte-6kp7um > .svelte-6kp7um").should("be.visible");
+      cy.get(".downloads").should("be.visible");
+      cy.get("h2.svelte-6kp7um").should("be.visible");
+      cy.get("div.svelte-6kp7um").should("be.visible");
+      cy.get(".testimony > .svelte-6kp7um").should("be.visible");
+      cy.get(".title").should("be.visible");
+      cy.get(".subtitle").should("be.visible");
+      cy.get(".insurance-cards").should("be.visible");
+    });
+  });
+  describe("Pruebas menú principal", () => {
+    it("Pruebas por categorias/CONTACTO", () => {
+      cy.visit("https://yapp.cl/");
+
+      cy.xpath("/html/body/div/div[1]/div/header/div/nav/a[7]").click();
+      cy.get('[name="name"]').type("prueba test");
+      cy.get('[type="email"]').type("test@tes.cl");
+      cy.get('[name="subject"]').type("*/-*/**/");
+      cy.get("textarea.svelte-gncfpm").type("TEST NICOLE");
+      cy.get("textarea.svelte-gncfpm").clear();
+      cy.get('[name="subject"]').clear();
+      cy.get('[type="email"]').clear();
+      cy.get('[name="name"]').clear();
+    });
+  });
+  describe("Pruebas menú principal", () => {
+    it("Pruebas de Cotizador de Medicamentos/CREACIÓN DE CUENTA", () => {
+      cy.visit("https://yapp.cl/");
+
+      cy.xpath("/html/body/div/div[1]/div/header/div/nav/a[3]").click();
+      cy.get("a.svelte-6kp7um > .svelte-6kp7um").click();
+
+      cy.get(".txt-5--regular-db").click();
+      cy.get("#gtm-webapp-register-name").click();
+      cy.get("#gtm-webapp-register-name").type("STEVEN");
+      cy.get("#gtm-webapp-register-last-name").click();
+      cy.get("#gtm-webapp-register-last-name").type("STEVEN");
+      cy.get("#gtm-webapp-register-email").click();
+      cy.get("#gtm-webapp-register-email").type("steven@steven.com");
+      cy.get("#gtm-webapp-register-pass").type("Steven_11");
+      cy.get("#gtm-webapp-register-repeat-pass").click();
+      cy.get("#gtm-webapp-register-repeat-pass").type("Steven_11");
+      cy.get("#gtm-webapp-register-check-terms").click();
+      //cy.get("#gtm-webapp-register-btn").click;
+    });
+  });
+
+  describe("Pruebas menú principal", () => {
+    it("Pruebas de Cotizador de Medicamentos/LOGIN", () => {
+      cy.visit("https://yapp.cl/");
+      //El flujo de inicio con Login y cotizar medicamentos no está con el flujo correcto.
     });
   });
 });

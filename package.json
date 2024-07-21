@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "cypress": "^13.13.1"
+    "cypress": "^13.13.1",
+    "cypress-xpath": "^2.0.1"
   },
   "dependencies": {
     "mocha": "^10.6.0"

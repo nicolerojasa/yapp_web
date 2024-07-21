@@ -196,6 +196,7 @@ describe("Pruebas Yapp Web", () => {
       cy.get("#map-tab > .svelte-6gx55k").should("be.visible");
       cy.get("#map-tab > .svelte-6gx55k").click();
       cy.get(".filters > .svelte-6l1bvx").select("Caldera");
+      cy.wait(5000);
       cy.get('[aria-label="Acercar"]').click();
       cy.get('[aria-label="Alejar"]').click();
       cy.wait(1000);

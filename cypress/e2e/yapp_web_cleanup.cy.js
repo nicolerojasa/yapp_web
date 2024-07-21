@@ -10,7 +10,7 @@ describe("Pruebas Yapp Web", () => {
     it("por secciones", () => {
       //it permite ordenar las pruebas ej: probar menu superior
 
-      cy.visit(constantes.URL);
+      cy.visit("https://yapp.cl");
       cy.wait(3000);
       cy.url().should("include", "yapp");
       cy.scrollTo(0, 700);
